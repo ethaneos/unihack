@@ -1,7 +1,9 @@
 import streamlit as st
 from app.app import AppManager
 from gui.home_page import show_home_page
-from gui.second_page import show_second_page
+from gui.upload_page import show_upload_page
+from gui.analysis_page import show_analysis_page
+from gui.settings_page import show_settings_page
 
 def launch():
     st.set_page_config(layout="wide", page_title="Unihack project")
@@ -14,12 +16,20 @@ def launch():
     def home_page():
         show_home_page(st.session_state.manager)
 
-    def second_page():
-        show_second_page(st.session_state.manager)
+    def upload_page():
+        show_upload_page(st.session_state.manager)
+
+    def analysis_page():
+        show_analysis_page(st.session_state.manager)
+    
+    def settings_page():
+        show_settings_page(st.session_state.manager)
 
     pages_list = [
         st.Page(home_page, title="Home Page", url_path="home"),
-        st.Page(second_page, title="Second Page", url_path="second"),
+        st.Page(upload_page, title="Upload Page", url_path="upload"),
+        st.Page(analysis_page, title="Analysis Page", url_path="analysis"),
+        st.Page(settings_page, title="Settings Page", url_path="settings"),
     ]
 
     st.html("""
