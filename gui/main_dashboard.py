@@ -1,6 +1,7 @@
 import streamlit as st
 from app.app import AppManager
 from gui.home_page import show_home_page
+from gui.second_page import show_second_page
 
 def launch():
     st.set_page_config(layout="wide", page_title="Unihack project")
@@ -13,8 +14,12 @@ def launch():
     def home_page():
         show_home_page(st.session_state.manager)
 
+    def second_page():
+        show_second_page(st.session_state.manager)
+
     pages_list = [
         st.Page(home_page, title="Home Page", url_path="home"),
+        st.Page(second_page, title="Second Page", url_path="second"),
     ]
 
     st.html("""
