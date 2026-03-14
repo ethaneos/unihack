@@ -45,7 +45,7 @@ def launch():
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: -3;
         }}
         </style>
         <canvas id="bgCanvas"></canvas>
