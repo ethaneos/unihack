@@ -37,7 +37,7 @@ def launch():
     st.html(f"""
         <style>
         .stApp {{
-            background: linear-gradient(135deg, #e0f7da 0%, #66bb6a 100%);
+            background: linear-gradient(135deg, #008000 0%, #7fffd4 100%);
             overflow: hidden;
         }}
         #bgCanvas {{
