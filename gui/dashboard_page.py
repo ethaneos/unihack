@@ -6,10 +6,10 @@ def show_dashboard_page(manager):
     
     with st.container():
 
-        st.write(""":green[The average household manages 3 subscriptions per month just for streaming.<br>
-        Think of all the services you currently pay for, can you remember them all? This is where SLD comes in to find them for you.]""")
+        st.markdown(":green[The average household manages **3** subscriptions per month just for streaming.]")
+        st.markdown(":blue[Think of the services you currently pay for; can you remember them all? This is where SLD comes in to find them for you.]")
+        if st.button("Find my subscriptions", type="primary", width="content"):
 
-        if st.button("Find my subscriptions", type="primary", width="stretch"):
             st.success("Let's a go!")
             st.switch_page(manager.upload_page)
     
