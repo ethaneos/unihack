@@ -34,6 +34,23 @@ def launch():
 
     st.session_state.manager.upload_page = pages_list[1]
 
+    st.markdown(f"""
+        <style>
+        .stApp {{
+            background: linear-gradient(135deg, #e0f7da 0%, #66bb6a 100%);
+            overflow: hidden;
+        }}
+        #bgCanvas {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }}
+        </style>
+        <canvas id="bgCanvas"></canvas>
+        """, unsafe_allow_html=True)
     st.html("""
         <style>
         .stAppHeader span {
@@ -44,6 +61,6 @@ def launch():
         </style>
 
         """)
-
+    
     all_page = st.navigation(pages_list, position = "top")
     all_page.run()
