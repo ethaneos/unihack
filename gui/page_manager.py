@@ -34,6 +34,7 @@ def launch():
 
     st.session_state.manager.upload_page = pages_list[1]
 
+    #gradient bg
     st.html(f"""
         <style>
         .stApp {{
@@ -49,6 +50,7 @@ def launch():
         </style>
         <canvas id="bgCanvas"></canvas>
     """)
+    #Bubbles
     st.html(f"""
     <div style="
         position: absolute; 
@@ -82,6 +84,25 @@ def launch():
         "></div>
     </div>
 """)
+    #Lines
+    st.html(f"""
+    <div style="
+        position: fixed;
+        bottom: 0vw;
+        left: 10vw;
+        width: 1300px;
+        height: 900px;
+        
+        background: repeating-linear-gradient(
+            45deg,
+            rgba(127, 255, 212, 0.3),   /* Color 1 */
+            rgba(127, 255, 212, 0.3) 2px, /* Line thickness */
+            transparent 2px,             /* Start of gap */
+            transparent 10px             /* End of gap/space between lines */
+        );
+    "></div>
+""")
+    #Header bar
     st.html("""
         <style>
         .stAppHeader span {
