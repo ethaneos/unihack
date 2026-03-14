@@ -1,9 +1,9 @@
 import streamlit as st
 from app.app import AppManager
-from gui.home_page import show_home_page
-from gui.upload_page import show_upload_page
-from gui.analysis_page import show_analysis_page
-from gui.settings_page import show_settings_page
+from pages.home_page import show_home_page
+from pages.upload_page import show_upload_page
+from pages.analysis_page import show_analysis_page
+from pages.settings_page import show_settings_page
 
 def home_page():
     show_home_page(st.session_state.manager, upload_page)
