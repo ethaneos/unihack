@@ -1,21 +1,36 @@
 import streamlit as st
 
 def show_home_page(manager):
-    st.header("Home Page")
-    st.write("Welcome to Subscription Leak Detector!")
 
-    col1 = st.columns(1)
-
-    with col1:
-        st.button("test button", type="primary", use_container_width=True)
-
-    input = st.text_input("What is your name?")#text box
+    st.header("Welcome to Subscription Leak Detector! ✨")
     
-    if st.button("Say Hello"):
-        if input:
-            st.write(f"Hello, {input}!")
-        else:
-            st.warning("Please enter a name first.")
+    st.markdown("""
+    <style>
+    /* Main background */
+    .stApp {
+        background-color: #f0fdf4; /* Very light mint green */
+    }
+    
+    /* Style the metric cards */
+    [data-testid="stMetricValue"] {
+        color: #166534; /* Dark forest green */
+    }
+    
+    /* Colorful Sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #dcfce7; /* Soft pastel green */
+    }
+    </style>
+    """, unsafe_allow_html = True)
+    
+    with st.container(border = True):
+        st.write("""The average household manages 3 subscriptions per month just for streaming.
+        Think of all the services you pay for, can you remember them all?
+        This is where SLD comes in to find them for you.""")
+
+        st.page_link("upload_page.py", label="View Your Subscriptions", icon="📊")
+        
+        
     
     with st.sidebar:
         st.markdown("#")
