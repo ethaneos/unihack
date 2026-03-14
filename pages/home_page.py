@@ -1,12 +1,31 @@
 import streamlit as st
 
 def show_home_page(manager):
+    st.markdown("""
+    <style>
+    .stContainerWithBorder {
+        border: 2px solid lightgreen;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
     st.header(":green[Welcome to Subscription Leak Detector!] ✨")
     
     
     with st.container(border = True):
-        st.write(""":green[The average household manages 3 subscriptions per month just for streaming.\n Think of all the services you pay for, can you remember them all?\n This is where SLD comes in to find them for you.]""")        
+        st.markdown('<div class="stContainerWithBorder">', unsafe_allow_html=True)
+        st.write(f"""
+        :lightgreen[The average household manages 3 subscriptions per month just for streaming.]
+        
+        :white[Think of all the services you currently pay for, can you remember them all?
+        This is where SLD comes in to find them for you.]""")
+
+        if st.button("Find my subscriptions"):
+            st.success("Let's a go!")
+            st.switch_page("upload")
         
     
     with st.sidebar:
