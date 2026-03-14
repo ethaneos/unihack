@@ -1,7 +1,7 @@
 import streamlit as st
 
 def show_analysis_page(manager):
-    st.header("Analysis Page")
+    st.header("Analysis")
 
     
     with st.sidebar:

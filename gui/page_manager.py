@@ -1,6 +1,6 @@
 import streamlit as st
 from app.app import AppManager
-from gui.home_page import show_home_page
+from gui.dashboard_page import show_dashboard_page
 from gui.upload_page import show_upload_page
 from gui.analysis_page import show_analysis_page
 from gui.settings_page import show_settings_page
@@ -13,8 +13,8 @@ def launch():
     if 'manager' not in st.session_state:
         st.session_state.manager = AppManager()
 
-    def home_page():
-        show_home_page(st.session_state.manager)
+    def dashboard_page():
+        show_dashboard_page(st.session_state.manager)
 
     def upload_page():
         show_upload_page(st.session_state.manager)
@@ -26,16 +26,16 @@ def launch():
         show_settings_page(st.session_state.manager)
 
     pages_list = [
-        st.Page(home_page, title="Home Page", url_path="home"),
-        st.Page(upload_page, title="Upload Page", url_path="upload"),
-        st.Page(analysis_page, title="Analysis Page", url_path="analysis"),
-        st.Page(settings_page, title="Settings Page", url_path="settings"),
+        st.Page(dashboard_page, title="Dashboard", url_path="home"),
+        st.Page(upload_page, title="Upload", url_path="upload"),
+        st.Page(analysis_page, title="Analysis", url_path="analysis"),
+        st.Page(settings_page, title="Settings", url_path="settings"),
     ]
 
     st.html("""
         <style>
         .stAppHeader span {
-            color: white !important;
+            color: black !important;
             font-size: 24px;
             margin: 10px;
         }

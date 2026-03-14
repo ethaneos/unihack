@@ -1,4 +1,4 @@
-from gui.main_dashboard import launch
+from gui.page_manager import launch
 
 if __name__ == "__main__":
     
