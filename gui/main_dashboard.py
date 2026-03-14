@@ -6,7 +6,7 @@ from gui.analysis_page import show_analysis_page
 from gui.settings_page import show_settings_page
 
 def home_page():
-    show_home_page(st.session_state.manager)
+    show_home_page(st.session_state.manager, upload_page)
 
 def upload_page():
     show_upload_page(st.session_state.manager)
