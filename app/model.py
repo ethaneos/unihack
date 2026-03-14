@@ -2,14 +2,10 @@
 Recurring Payment Analyzer - Object Oriented Implementation
 Analyzes financial transaction data to identify and classify recurring payments.
 """
-
 import pandas as pd
-import numpy as np
 import datetime
 import re
 from collections import Counter
-from fuzzywuzzy import fuzz
-
 
 class RecurringPaymentAnalyzer:
     """

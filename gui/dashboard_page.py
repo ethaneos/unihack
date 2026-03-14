@@ -2,7 +2,7 @@ import streamlit as st
 
 def show_dashboard_page(manager):
 
-    st.title(":green[WTH am I paying for???]")
+    st.title(":green[WTH(heck) am I paying for???]")
     st.header(":green[Welcome to Subscription Leak Detector!] ✨")
 
     with st.container():
