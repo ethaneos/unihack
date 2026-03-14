@@ -32,10 +32,12 @@ def launch():
         st.Page(settings_page, title="Settings", url_path="settings"),
     ]
 
+    st.session_state.manager.upload_page = pages_list[1]
+
     st.html("""
         <style>
         .stAppHeader span {
-            color: black !important;
+            color: white !important;
             font-size: 24px;
             margin: 10px;
         }

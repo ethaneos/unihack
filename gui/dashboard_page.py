@@ -11,7 +11,7 @@ def show_dashboard_page(manager):
 
         if st.button("Find my subscriptions", type="primary", width="stretch"):
             st.success("Let's a go!")
-            st.switch_page("gui/upload_page.py")
+            st.switch_page(manager.upload_page)
     
     with st.sidebar:
         st.markdown("#")
