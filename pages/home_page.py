@@ -6,7 +6,7 @@ def show_home_page(manager):
     
     
     with st.container(border = True):
-        st.write(""":lightgreen[The average household manages 3 subscriptions per month just for streaming.\n Think of all the services you pay for, can you remember them all?\n This is where SLD comes in to find them for you.]""")        
+        st.write(""":green[The average household manages 3 subscriptions per month just for streaming.\n Think of all the services you pay for, can you remember them all?\n This is where SLD comes in to find them for you.]""")        
         
     
     with st.sidebar:
