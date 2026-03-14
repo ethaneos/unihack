@@ -34,7 +34,7 @@ def launch():
 
     st.session_state.manager.upload_page = pages_list[1]
 
-    st.markdown(f"""
+    st.html(f"""
         <style>
         .stApp {{
             background: linear-gradient(135deg, #e0f7da 0%, #66bb6a 100%);
@@ -50,7 +50,7 @@ def launch():
         }}
         </style>
         <canvas id="bgCanvas"></canvas>
-        """, unsafe_allow_html=True)
+        """)
     st.html("""
         <style>
         .stAppHeader span {
