@@ -5,6 +5,18 @@ from gui.upload_page import show_upload_page
 from gui.analysis_page import show_analysis_page
 from gui.settings_page import show_settings_page
 
+def home_page():
+    show_home_page(st.session_state.manager)
+
+def upload_page():
+    show_upload_page(st.session_state.manager)
+
+def analysis_page():
+    show_analysis_page(st.session_state.manager)
+
+def settings_page():
+    show_settings_page(st.session_state.manager)
+        
 def launch():
     st.set_page_config(layout="wide", page_title="Unihack project")
 
@@ -12,18 +24,6 @@ def launch():
     # This is crucial so the manager object persists as we switch pages.
     if 'manager' not in st.session_state:
         st.session_state.manager = AppManager()
-
-    def home_page():
-        show_home_page(st.session_state.manager)
-
-    def upload_page():
-        show_upload_page(st.session_state.manager)
-
-    def analysis_page():
-        show_analysis_page(st.session_state.manager)
-    
-    def settings_page():
-        show_settings_page(st.session_state.manager)
 
     pages_list = [
         st.Page(home_page, title="Home Page", url_path="home"),
