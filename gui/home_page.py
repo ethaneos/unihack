@@ -28,7 +28,7 @@ def show_home_page(manager):
         Think of all the services you pay for, can you remember them all?
         This is where SLD comes in to find them for you.""")
 
-        st.page_link(upload_page, label="View Your Subscriptions", icon="📊")
+        st.page_link("upload", label="View Your Subscriptions", icon="📊")
         
         
     
