@@ -44,13 +44,44 @@ def launch():
             position: absolute;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
             z-index: -1;
         }}
         </style>
         <canvas id="bgCanvas"></canvas>
-        """)
+    """)
+    st.html(f"""
+    <div style="
+        position: absolute; 
+        top: 0; 
+        right: 0; 
+        width: 350px; 
+        height: 350px;
+    ">
+        <div style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px; 
+            height: 250px; 
+            background: #90ee90;
+            border-radius: 50%;
+            opacity: 0.9;
+            z-index: 2;
+        "></div>
+
+        <div style="
+            position: absolute;
+            top: 180px;
+            right: 180px;
+            width: 120px; 
+            height: 120px; 
+            background: #90ee90;
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: 1;
+        "></div>
+    </div>
+""")
     st.html("""
         <style>
         .stAppHeader span {
