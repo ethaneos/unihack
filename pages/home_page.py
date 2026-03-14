@@ -23,9 +23,9 @@ def show_home_page(manager):
         :white[Think of all the services you currently pay for, can you remember them all?
         This is where SLD comes in to find them for you.]""")
 
-        if st.button("Find my subscriptions"):
+        if st.button("Find my subscriptions", type="primary", width="stretch"):
             st.success("Let's a go!")
-            st.switch_page("upload")
+            st.switch_page("./upload")
         
     
     with st.sidebar:
