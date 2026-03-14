@@ -34,23 +34,75 @@ def launch():
 
     st.session_state.manager.upload_page = pages_list[1]
 
-    st.markdown(f"""
+    #gradient bg
+    st.html(f"""
         <style>
         .stApp {{
-            background: linear-gradient(135deg, #e0f7da 0%, #66bb6a 100%);
+            background: linear-gradient(135deg, #7fffd4 0%, #008000 200%);
             overflow: hidden;
         }}
         #bgCanvas {{
             position: absolute;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
+            z-index: -3;
         }}
         </style>
         <canvas id="bgCanvas"></canvas>
-        """, unsafe_allow_html=True)
+    """)
+    #Bubbles
+    st.html(f"""
+    <div style="
+        position: absolute; 
+        top: 0; 
+        right: 0; 
+        width: 350px; 
+        height: 350px;
+    ">
+        <div style="
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px; 
+            height: 250px; 
+            background: #90ee90;
+            border-radius: 50%;
+            opacity: 0.9;
+            z-index: 2;
+        "></div>
+
+        <div style="
+            position: absolute;
+            top: 180px;
+            right: 180px;
+            width: 120px; 
+            height: 120px; 
+            background: #90ee90;
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: 1;
+        "></div>
+    </div>
+""")
+    #Lines
+    st.html(f"""
+    <div style="
+        position: fixed;
+        bottom: 0vw;
+        left: 10vw;
+        width: 1300px;
+        height: 900px;
+        
+        background: repeating-linear-gradient(
+            45deg,
+            rgba(127, 255, 212, 0.3),   /* Color 1 */
+            rgba(127, 255, 212, 0.3) 2px, /* Line thickness */
+            transparent 2px,             /* Start of gap */
+            transparent 10px             /* End of gap/space between lines */
+        );
+    "></div>
+""")
+    #Header bar
     st.html("""
         <style>
         .stAppHeader span {
