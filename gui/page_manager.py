@@ -34,85 +34,79 @@ def launch():
 
     st.session_state.manager.upload_page = pages_list[1]
 
-    #gradient bg
     st.html(f"""
         <style>
-        .stApp {{
-            background: linear-gradient(135deg, #7fffd4 0%, #008000 200%);
-            overflow: hidden;
-        }}
-        #bgCanvas {{
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -3;
-        }}
+            /* 1. Global App Background */
+            .stApp {{
+                background: linear-gradient(135deg, #7fffd4 0%, #008000 200%);
+            }}
+
+            /* 2. Header Text Color */
+            .stAppHeader span {{
+                color: white !important;
+                font-size: 24px;
+                margin: 10px;
+            }}
+
+            /* 3. The Canvas Background */
+            #bgCanvas {{
+                position: fixed;
+                top: 0; left: 0;
+                width: 100vw; height: 100vh;
+                z-index: -100;
+                pointer-events: none;
+            }}
+
+            /* 4. Decorations Wrapper (Crucial for Z-Index) */
+            .ui-decoration {{
+                position: fixed;
+                top: 0; left: 0;
+                width: 100vw; height: 100vh;
+                z-index: 0; /* Sits behind the main app content */
+                pointer-events: none; /* Allows clicking through to buttons */
+            }}
+
+            .bubble-main {{
+                position: absolute;
+                top: -5vw; right: -5vw;
+                width: 25vw; height: 25vw;
+                background: #90ee90;
+                border-radius: 50%;
+                opacity: 0.8;
+            }}
+
+            .bubble-sub {{
+                position: absolute;
+                top: 15vw; right: 15vw;
+                width: 12vw; height: 12vw;
+                background: #90ee90;
+                border-radius: 50%;
+                opacity: 0.4;
+            }}
+
+            .diagonal-lines {{
+                position: absolute;
+                bottom: 0; left: 0;
+                width: 100vw; height: 100vw;
+                background: repeating-linear-gradient(
+                    45deg,
+                    rgba(127, 255, 212, 0.3),
+                    rgba(127, 255, 212, 0.3) 2px,
+                    transparent 2px,
+                    transparent 12px
+                );
+                -webkit-mask-image: radial-gradient(circle at bottom left, black 20%, transparent 80%);
+            }}
         </style>
+
         <canvas id="bgCanvas"></canvas>
-    """)
-    #Bubbles
-    st.html(f"""
-    <div style="
-        position: absolute; 
-        top: 0; 
-        right: 0; 
-        width: 350px; 
-        height: 350px;
-    ">
-        <div style="
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 250px; 
-            height: 250px; 
-            background: #90ee90;
-            border-radius: 50%;
-            opacity: 0.9;
-            z-index: 2;
-        "></div>
-
-        <div style="
-            position: absolute;
-            top: 180px;
-            right: 180px;
-            width: 120px; 
-            height: 120px; 
-            background: #90ee90;
-            border-radius: 50%;
-            opacity: 0.5;
-            z-index: 1;
-        "></div>
-    </div>
-""")
-    #Lines
-    st.html(f"""
-    <div style="
-        position: fixed;
-        bottom: 0vw;
-        left: 10vw;
-        width: 1300px;
-        height: 900px;
         
-        background: repeating-linear-gradient(
-            45deg,
-            rgba(127, 255, 212, 0.3),   /* Color 1 */
-            rgba(127, 255, 212, 0.3) 2px, /* Line thickness */
-            transparent 2px,             /* Start of gap */
-            transparent 10px             /* End of gap/space between lines */
-        );
-    "></div>
-""")
-    #Header bar
-    st.html("""
-        <style>
-        .stAppHeader span {
-            color: white !important;
-            font-size: 24px;
-            margin: 10px;
-        }
-        </style>
-
-        """)
+        <div class="ui-decoration">
+            <div class="bubble-main"></div>
+            <div class="bubble-sub"></div>
+            <div class="diagonal-lines"></div>
+        </div>
+    """)
     
     all_page = st.navigation(pages_list, position = "top")
     all_page.run()
