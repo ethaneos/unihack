@@ -16,7 +16,7 @@ def show_upload_page(manager):
             uploaded_file = st.file_uploader("Upload a CSV", type="csv", accept_multiple_files=False)
             if st.button("Analyse banking records", type="primary", width="stretch"):
                 if uploaded_file is not None:
-                    manager.analyse_bank_csv(bank_name.lower(), uploaded_file)
+                    manager.analysis = manager.analyse_bank_csv(bank_name.lower(), uploaded_file)
                 else:
                     st.error("Please upload a CSV file before analysing.")
     
