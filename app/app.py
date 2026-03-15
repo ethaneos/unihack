@@ -4,7 +4,7 @@ import pandas as pd
 from io import StringIO
 from datetime import datetime as dtdt
 from app.bank_cleaner import CSVCleaner
-from app.model import RecurringPaymentAnalyzer
+from app.xgb_model import SubscriptionDetector
 
 class AppManager:
     """The main controller for all business logic and data handling."""
@@ -48,7 +48,7 @@ class AppManager:
         os.remove(temp_file_path)
 
         # Initialize analyzer with cleaned data
-        analyzer = RecurringPaymentAnalyzer(cleaned_df)
+        analyzer = SubscriptionDetector(cleaned_df)
         
         # Run complete analysis
         results = analyzer.run_analysis(

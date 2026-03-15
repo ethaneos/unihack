@@ -219,8 +219,7 @@ if __name__ == "__main__":
     detector.train(training_set)
     
     # Load and analyze test data
-    testing_set = detector.load_data("example_training_set.csv")
-    testing_set = testing_set.rename(columns={'Date': 'date', 'Description': 'description', 'Debit': 'debit'})
+    testing_set = detector.load_data("testing_set.csv")
     
     results_df = detector.analyze(testing_set)
     print(results_df)
