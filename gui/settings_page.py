@@ -4,5 +4,3 @@ def show_settings_page(manager):
     st.header("Settings")
 
     
-    with st.sidebar:
-        st.markdown("#")
