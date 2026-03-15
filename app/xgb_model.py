@@ -213,18 +213,14 @@ class SubscriptionDetector:
 
 # Usage
 if __name__ == "__main__":
-    detector = SubscriptionDetector()
-    
-    # Load and train
-    training_set = detector.load_data("main_training_data.csv")
-    detector.train(training_set)
-    
-    # Initialize detector with testing data
+    testing_set = pd.read_csv("data/daniel_testing_set.csv")
+    testing_set.rename(columns={"Date": "date", "Description": "description", "Debit": "debit"}, inplace=True)
     detector = SubscriptionDetector(testing_set)
     
-    # Train on training data
+    # Load and train
+    training_set = detector.load_data("data/main_training_data.csv")
     detector.train(training_set)
-    
+
     # Analyze and retrieve results
     results_df = detector.analyze()
     print(results_df)
