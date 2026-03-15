@@ -1,5 +1,7 @@
 import json
 import os
+import pandas as pd
+from datetime import datetime as dtdt
 from app.bank_cleaner import CSVCleaner
 from app.model import RecurringPaymentAnalyzer
 
@@ -29,10 +31,17 @@ class AppManager:
         except (FileNotFoundError, json.decoder.JSONDecodeError):
             print("Data file not found. Starting with a clean state.")
 
-    def analyse_bank_csv(self, bank_name, csv_path):
+    def analyse_bank_csv(self, bank_name, csv):
+        temp_file_name = dtdt.strftime(dtdt.now(), '%y-%m-%d-%H-%M-%S-%f') + ".csv"
+        temp_file_path = "data/temps/" + temp_file_name
+        with open(f"{temp_file_path}", "wb") as f:
+            f.write(csv.getbuffer())
+
         cleaner = CSVCleaner()
-        cleaned_df = cleaner.clean_bank_csv(csv_path, bank_name)
+        cleaned_df = cleaner.clean_bank_csv(temp_file_path, bank_name)
         
+        os.remove(temp_file_path)
+
         # Initialize analyzer with cleaned data
         analyzer = RecurringPaymentAnalyzer(cleaned_df)
         
@@ -48,4 +57,5 @@ class AppManager:
         flagged_payments = analyzer.get_flagged_payments()
         
         # Save results
-        results.to_csv('data/recurring_payment_analysis.csv', index=False)
+        results.to_csv(f"data/recurring_payment_analysis_{temp_file_name}.csv", index=False)
+        # TODO: Change this to a return tuple
