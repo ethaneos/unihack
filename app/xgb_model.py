@@ -8,8 +8,9 @@ from xgboost import XGBClassifier
 class SubscriptionDetector:
     """Detects and analyzes recurring subscription transactions from bank statements."""
     
-    def __init__(self):
+    def __init__(self, testing_set):
         """Initialize the detector with predefined patterns and model parameters."""
+        self.testing_set = testing_set
         self.model = XGBClassifier(
             n_estimators=300,
             learning_rate=0.05,
@@ -168,9 +169,9 @@ class SubscriptionDetector:
         """Determine subscription status based on next billing date."""
         return "LIKELY CANCELLED" if next_billing < today else "ACTIVE"
     
-    def analyze(self, test_data):
-        """Analyze test data and detect active subscriptions."""
-        X_test, df_test = self.feature_engineering(test_data, fit=False)
+    def analyze(self):
+        """Analyze stored test data and detect active subscriptions."""
+        X_test, df_test = self.feature_engineering(self.testing_set, fit=False)
         df_test["pred_recurring"] = self.model.predict(X_test)
         
         recurring = df_test[df_test["pred_recurring"] == 1]
@@ -218,8 +219,12 @@ if __name__ == "__main__":
     training_set = detector.load_data("main_training_data.csv")
     detector.train(training_set)
     
-    # Load and analyze test data
-    testing_set = detector.load_data("testing_set.csv")
+    # Initialize detector with testing data
+    detector = SubscriptionDetector(testing_set)
     
-    results_df = detector.analyze(testing_set)
+    # Train on training data
+    detector.train(training_set)
+    
+    # Analyze and retrieve results
+    results_df = detector.analyze()
     print(results_df)
