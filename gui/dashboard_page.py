@@ -18,5 +18,3 @@ def show_dashboard_page(manager):
             st.success("Let's a go!")
             st.switch_page(manager.upload_page)
     
-    with st.sidebar:
-        st.markdown("#")

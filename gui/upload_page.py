@@ -22,6 +22,3 @@ def show_upload_page(manager):
                     manager.analyse_bank_csv(bank_name.lower(), uploaded_file)
                 else:
                     st.error("Please upload a CSV file before analysing.")
-    
-    with st.sidebar:
-        st.markdown("#")
