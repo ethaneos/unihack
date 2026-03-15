@@ -6,7 +6,7 @@ class CSVCleaner:
     """Cleans a csv for use in modelling
     For usage:
     e.g
-    clean_bank_csv("Rabo.csv", "rabo", output_path="cleaned_rabo_data.csv")
+    clean_bank_csv("Rabo.csv", "rabobank", output_path="cleaned_rabo_data.csv")
     """
     # Define rules for CSV formats
     csv_configs = {
@@ -42,7 +42,7 @@ class CSVCleaner:
             # already numbers, just cast
             "debit_cleaning": "CAST(\"{debit_col}\" AS FLOAT)"       
         },
-        "rabo": {
+        "rabobank": {
             "date_col": "Date",
             "date_format": "%d/%m/%Y",
             "desc_col": "Description",
