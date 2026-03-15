@@ -95,4 +95,6 @@ def show_analysis_page(manager):
     # Call in your page
     show__quiz()
 
+    st.dataframe(manager.analysis)
+
 #guess total: reveal all in table

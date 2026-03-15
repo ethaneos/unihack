@@ -48,19 +48,12 @@ class AppManager:
         os.remove(temp_file_path)
 
         # Initialize analyzer with cleaned data
-        analyzer = SubscriptionDetector(cleaned_df)
+        detector = SubscriptionDetector()
         
-        # Run complete analysis
-        results = analyzer.run_analysis(
-            min_occurrences=3,           # Minimum 3 occurrences
-            min_date='2026-01-01'        # Only recent transactions
-        )
-        
-        # Access specific results
-        valid_recurring = analyzer.get_valid_recurring()
-        mixed_patterns = analyzer.get_mixed_patterns()
-        flagged_payments = analyzer.get_flagged_payments()
-        
-        # Save results
-        results.to_csv(f"data/recurring_payment_analysis_{temp_file_name}.csv", index=False)
-        # TODO: Change this to a return tuple
+        # Load and train
+        training_set = detector.load_data("data/main_training_data.csv")
+        detector.train(training_set)
+
+        # Analyze and retrieve results
+        results_df = detector.analyze(cleaned_df)
+        return results_df
