@@ -1,6 +1,7 @@
 import json
 import os
 import pandas as pd
+from io import StringIO
 from datetime import datetime as dtdt
 from app.bank_cleaner import CSVCleaner
 from app.model import RecurringPaymentAnalyzer
@@ -32,10 +33,14 @@ class AppManager:
             print("Data file not found. Starting with a clean state.")
 
     def analyse_bank_csv(self, bank_name, csv):
+
+        stringio = StringIO(csv.getvalue().decode("utf-8"), newline=None)
+        csv_data = stringio.read()
+
         temp_file_name = dtdt.strftime(dtdt.now(), '%y-%m-%d-%H-%M-%S-%f') + ".csv"
-        temp_file_path = "data/temps/" + temp_file_name
-        with open(f"{temp_file_path}", "wb") as f:
-            f.write(csv.getbuffer())
+        temp_file_path = os.path.join("data/temps/", temp_file_name)
+        with open(f"{temp_file_path}", "w+") as f:
+            f.write(csv_data)
 
         cleaner = CSVCleaner()
         cleaned_df = cleaner.clean_bank_csv(temp_file_path, bank_name)
